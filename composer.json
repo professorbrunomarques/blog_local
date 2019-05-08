@@ -1,0 +1,17 @@
+{
+    "name": "professorbrunomarques/blog_local",
+    "description": "Projeto de gerenciador de Blogs",
+    "type": "project",
+    "require": {
+        "phpmailer/phpmailer": "^6.0",
+        "rain/raintpl": "^3.1",
+        "slim/slim": "2.0"
+    },
+    "license": "Free",
+    "authors": [
+        {
+            "name": "Bruno Marques",
+            "email": "profbrunomarques@gmail.com"
+        }
+    ]
+}
