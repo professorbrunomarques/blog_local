@@ -2,6 +2,7 @@
 namespace Blog;
 
 use Rain\Tpl;
+use \Blog\helper\Check;
 
 class Page{
 
@@ -28,7 +29,16 @@ class Page{
         Tpl::configure( $config );
         
         $this->tpl = new Tpl;
-
+        
+        if (isset($_SESSION["User"])) {
+            //Inclusão da sessão do usuário para exibição no template
+            $this->options["data"] = $_SESSION["User"];
+            //Busca a imagem no gravatar de acordo com o email
+            $this->options["data"]["image"] = Check::get_gravatar($this->options["data"]["email"]);
+            //Remove o password do template
+            unset($this->options["data"]["password"]);
+        }
+        
         $this->setData($this->options["data"]);
 
         if($this->options["header"] === true)
