@@ -25,17 +25,24 @@
         <!-- form start -->
         <form role="form" action="/admin/users/create" method="post">
           <div class="box-body">
+            {if="$data.error"}
+            <div class="alert alert-warning alert-dismissible">
+                <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                <h4><i class="icon fa fa-warning"></i> Atenção!</h4>
+                O email informado <b>{$data.email} parece não estar correto!</b>
+            </div>
+            {/if}
             <div class="form-group">
               <label for="name">Nome</label>
-              <input type="text" class="form-control" id="name" name="name" placeholder="Digite o nome" required>
+              <input type="text" class="form-control" id="name" name="name" placeholder="Digite o nome" value="{$data.name}" required>
             </div>
             <div class="form-group">
               <label for="login">Login</label>
-              <input type="text" class="form-control" id="login" name="login" placeholder="Digite o login" required>
+              <input type="text" class="form-control" id="login" name="login" placeholder="Digite o login" value="{$data.login}" required>
             </div>
             <div class="form-group">
               <label for="email">E-mail</label>
-              <input type="email" class="form-control" id="email" name="email" placeholder="Digite o e-mail" required>
+              <input type="email" class="form-control" id="email" name="email" placeholder="Digite o e-mail" value="{$data.email}" required>
             </div>
             <div class="form-group">
               <label for="password">Senha</label>
@@ -43,7 +50,7 @@
             </div>
             <div class="checkbox">
               <label>
-                <input type="checkbox" name="level" value="1"> Acesso de Administrador
+                <input type="checkbox" name="level" value="1" {if="$data.level == 1"}checked{/if}> Acesso de Administrador
               </label>
             </div>
           </div>
